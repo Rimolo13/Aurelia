@@ -4,9 +4,9 @@ clear
 cd ./
 npm install
 clear
-cp ./config.json ./src
+cp -n ./config.json ./src
 npx tsc
 cp -r ./node_modules ./dist
 cp ./package.json ./dist
 cd ./dist
-node ./index.js
+npm run aurelia
