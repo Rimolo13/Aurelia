@@ -1,8 +1,9 @@
 @echo off
 cls
 cd /d %~dp0
-npx ncu -u
 npm install
+cls
+npx ncu -u
 cls
 if not exist ".\src\config.json" copy ".\config.json" ".\src\config.json"
 npx tsc

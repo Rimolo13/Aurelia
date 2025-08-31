@@ -8,7 +8,7 @@ export class AutoUpdate {
 
   updateRepo() {
     exec(
-      "cd .. && git pull && npm install && npx tsc",
+      "cd .. && git pull && npx ncu -u && npm install && npx tsc",
       (error: Error | null, stdout: string, stderr: string) => {
         if (error) {
           console.error(`❌ Fehler: ${error.message}`);
