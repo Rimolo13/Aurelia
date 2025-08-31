@@ -2,6 +2,7 @@
 
 clear
 cd ./
+npx ncu -u
 npm install
 clear
 cp -n ./config.json ./src

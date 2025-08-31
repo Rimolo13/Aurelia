@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 
 import { LoadFeatures } from "./LoadFeatures.js";
+import { AutoUpdate } from "./AutoUpdate.js";
 
 export class DiscordBot {
   instance: Client;
@@ -37,6 +38,7 @@ export class DiscordBot {
     });
 
     new LoadFeatures(this.instance);
+    new AutoUpdate();
 
     this.instance.once("clientReady", (client: Client) => {
       console.log(`${this.instance.user?.username} ist Eingelogt.`);

@@ -4,9 +4,10 @@
     "chokidar": "^4.0.3",
     "discord.js": "^14.22.1",
     "nodemon": "^3.1.10",
+    "npm-check-updates": "^18.0.3",
     "typescript": "^5.9.2"
   },
   "scripts": {
-    "aurelia": "nodemon --watch ./ --ext js,json --delay 250ms --exec \"node ./index.js\""
+    "aurelia": "nodemon --watch ./ --ext js,json --delay 3000ms --exec \"node ./index.js\""
   }
 }
