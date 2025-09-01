@@ -7,7 +7,7 @@ export class LoadFeatures {
 
   constructor(instance: Client) {
     this.loadFeatures(instance).then(() => {
-      console.log(this.features.map((f) => f.constructor.name));
+      console.log(`Loaded Functions📜: [ ${this.features.map((f) => f.constructor.name)} ]`);
     });
   }
 

@@ -41,7 +41,7 @@ export class DiscordBot {
     new AutoUpdate();
 
     this.instance.once("clientReady", (client: Client) => {
-      console.log(`${this.instance.user?.username} ist Eingelogt.`);
+      console.log(`${this.instance.user?.username} ist Online🌐`);
     });
 
     this.instance.login(token);

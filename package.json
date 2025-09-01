@@ -8,6 +8,6 @@
     "typescript": "^5.9.2"
   },
   "scripts": {
-    "aurelia": "nodemon --watch ./ --ext js,json --delay 3000ms --exec \"node ./index.js\""
+    "aurelia": "nodemon --watch ./ --ext js,json --delay 3000ms --exec \"clear && node ./index.js\""
   }
 }
