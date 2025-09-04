@@ -5,7 +5,7 @@ npm install
 cls
 npx ncu -u
 cls
-if not exist ".\src\config.json" copy ".\config.json" ".\src\config.json"
+copy /Y ".\config.json" ".\src\config.json"
 npx tsc
 xcopy ".\node_modules" ".\dist\node_modules" /E /I /Y
 copy /Y ".\package.json" ".\dist\package.json"

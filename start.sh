@@ -6,7 +6,7 @@ npm install
 clear
 npx ncu -u
 clear
-cp -n ./config.json ./src
+cp ./config.json ./src
 npx tsc
 cp -r ./node_modules ./dist
 cp ./package.json ./dist
