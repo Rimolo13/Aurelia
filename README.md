@@ -9,7 +9,6 @@
 ### Allgemein 💠
 
 1. Richte die config.json ein.
-   (Dies geht nur einmal von dem Hauptordner, bei erneuter änderung im src Ordner die config.json ändern.)
 2. Installiere Git für dein jeweiliges Betriebssystem.
 3. Lade anschließend den Source-Code herunter.
 4. Gehe in den Installationsordner, mache einen Rechtsklick und wähle „Im Terminal öffnen“. 
