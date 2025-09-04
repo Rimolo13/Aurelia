@@ -3,7 +3,6 @@ import { exec } from "child_process";
 export class AutoUpdate {
   constructor() {
     setInterval(this.updateRepo, 6 * 60 * 60 * 1000);
-    this.updateRepo()
   }
 
   updateRepo() {
