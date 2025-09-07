@@ -1,10 +1,10 @@
 [{
         "token": "",
         "guild": "",
-        "admin": ""
+        "admin": "",
+        "mitteilungen": ""
     },
     {
-        "mitteilungen": "",
         "mitglieder_stat": "",
         "bots_stat": "",
         "willkommen": "",
