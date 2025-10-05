@@ -7,7 +7,7 @@ export class AutoUpdate {
 
   updateRepo() {
     exec(
-      "cd .. && cp ./config.json ./src && git pull && npx tsc && cp ./src/config.json .. && cp ./package.json ./dist && cd ./dist && npm install && clear",
+      "cd .. && cp ./config.json ./src && git reset --hard HEAD && git pull && cp ./src/config.json .. && npm install && rm -r ./dist/node_modules && cp -r ./node_modules ./dist && cp ./package.json ./dist && npx tsc && clear",
       (error: Error | null, stdout: string, stderr: string) => {
         if (error) {
           console.error(`❌ Fehler: ${error.message}`);
