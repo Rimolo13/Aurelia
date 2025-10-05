@@ -1,14 +1,11 @@
 #!/bin/bash
-
-clear
 cd ./
 npm install
-clear
 npx ncu -u
-clear
+npm install
 cp ./config.json ./src
 npx tsc
-cp -r ./node_modules ./dist
 cp ./package.json ./dist
 cd ./dist
+npm install
 npm run aurelia
