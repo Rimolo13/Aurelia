@@ -1,9 +1,9 @@
 @echo off
 cd ../
-copy /Y ./config.json ./src
+copy /Y ./configuration ./temp
 git reset --hard HEAD
 git pull
-copy /Y ./src/config.json .
+copy /Y ../temp ../configuration
 npx ncu -u
 npm install
 cls
