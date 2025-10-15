@@ -1,5 +1,5 @@
 @echo off
-cd /d %~dp0
+cd ../
 copy /Y ./config.json ./src
 git reset --hard HEAD
 git pull

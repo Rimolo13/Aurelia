@@ -1,5 +1,5 @@
 #!/bin/bash
-cd ./
+cd ../
 cp ./config.json ./src
 git reset --hard HEAD
 git pull

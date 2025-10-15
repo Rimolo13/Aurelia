@@ -1,7 +1,7 @@
 @echo off
-cd /d %~dp0
+cd ../
 npm install
-copy /Y ".\config.json" ".\src\config.json"
+copy /Y ".\configuration/config.json" ".\src\config.json"
 npx tsc
 copy /Y ".\package.json" ".\dist\package.json"
 cd .\dist
