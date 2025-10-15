@@ -9,10 +9,14 @@ const commands: any[] = [];
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
 
-commandFiles.forEach(commandFile => {
-  const command = require('./commands/${commandFile}');
+for (const commandFile of commandFiles) {
+  const command = await import(`./commands/${commandFile}`);
+  try {
   commands.push(command.data.toJSON());
-});
+  } catch (error) {
+    console.error(`Error loading command from ${commandFile}:`, error);
+  }
+};
 
 const restClient = new REST().setToken(token);
 
