@@ -1,11 +1,11 @@
 import { REST, Routes } from "discord.js";
 import config from './config.json' with { type: 'json' };
-const token = config[0].token;
-const guildId = config[0].guildId;
-const clientId = config[0].clientId;
+const token:any = config[0].token;
+const guildId:any = config[0].guildId;
+const clientId:any= config[0].clientId;
 import fs from "fs";
 
-const commands = [];
+const commands: any[] = [];
 
 const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
 
@@ -14,9 +14,9 @@ commandFiles.forEach(commandFile => {
   commands.push(command.data.toJSON());
 });
 
-const rest = new REST().setToken(token);
+const restClient = new REST().setToken(token);
 
 restClient.put(Routes.applicationGuildCommands(clientId, guildId),
 { body: commands })
-.than(() => console.log('Successfully registered application commands.'))
+.then(() => console.log('Successfully registered application commands.'))
 .catch(console.error);
