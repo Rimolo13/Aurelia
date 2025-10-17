@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ../
-mkdir temp
+mkdir -p temp
 cp -r ./configuration/* ./temp
 git reset --hard HEAD
 git pull
