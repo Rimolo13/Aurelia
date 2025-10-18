@@ -9,6 +9,7 @@ import { LoadFeatures } from "./LoadFeatures.js";
 import { AutoUpdate } from "./AutoUpdate.js";
 import { DeployCommands } from "./DeployCommands.js";
 import { LoadCommands } from "./LoadCommands.js";
+import { error } from "console";
 
 export class DiscordBot {
   instance: Client;
@@ -48,6 +49,8 @@ export class DiscordBot {
       console.log(`${this.instance.user?.username} ist Online🌐`);
     }); 
 
-    this.instance.login(token);
+      this.instance.login(token).catch((error) => {
+      console.log(`None or False Discord Token!`);
+      });
   }
 }
