@@ -8,4 +8,3 @@ const command = {
 };
 
 export default command;
-//test

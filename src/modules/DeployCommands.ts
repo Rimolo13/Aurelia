@@ -17,7 +17,7 @@ export class DeployCommands {
   async DeployCommands() {
     const commandFiles = fs.readdirSync(`./commands`).filter((file) => file.endsWith(`.js`));
     for (const commandFile of commandFiles) {
-      const command = await import(`../commands/${commandFile}`);
+      const command = (await import(`../commands/${commandFile}`)).default;
       try {
         commands.push(command.data.toJSON());
       } catch (error) {

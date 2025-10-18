@@ -1,29 +1,33 @@
-import { ChatInputCommandInteraction ,Collection} from "discord.js";
-import { ExtendedClient } from "./ExtendedClient";
+import { ChatInputCommandInteraction ,Client, Interaction} from "discord.js";
 import fs from "fs";
 
 export class LoadCommands {
-  instance: ExtendedClient;
-  constructor(instance: ExtendedClient) {
+  instance: Client;
+  commands: Map<string, any> = new Map();
+  constructor(instance: Client) {
     this.instance = instance;
     if (fs.existsSync("./commands")) {
-        instance.commands = new Collection();
         this.LoadCommands();
 
-      instance.on("interaction", async (interaction: ChatInputCommandInteraction) => {
-        if (!interaction.isCommand()) return;
-        const command = instance.commands.get(interaction.commandName);
-        if (command) {
+      instance.on("interactionCreate", async (interaction: Interaction) => {
+          if (!interaction.isCommand()) return;
+          const commandinteraction = interaction as ChatInputCommandInteraction;
+          const command = this.commands.get(commandinteraction.commandName);
+          if (command) {
             try {
-                await command.execute(interaction);
-            }catch (error) {
-                if(interaction.deferred || interaction.replied) {
-                    interaction.editReply("There was an error while executing this command!")
-                } else {
-                    interaction.reply("There was an error while executing this command!")
-                }
+              await command.execute(commandinteraction);
+            } catch (error) {
+              if (commandinteraction.deferred || commandinteraction.replied) {
+                commandinteraction.editReply(
+                  "There was an error while executing this command!"
+                );
+              } else {
+                commandinteraction.reply(
+                  "There was an error while executing this command!"
+                );
+              }
             }
-        }
+          }
       });
     };
   }
@@ -31,8 +35,8 @@ export class LoadCommands {
   async LoadCommands() {
     const commandFiles = fs.readdirSync(`./commands`).filter((file) => file.endsWith(`.js`));
     for (const commandFile of commandFiles) {
-        const command = await import(`../commands/${commandFile}`);
-        this.instance.commands.set(command.data.name, command);
+        const command = (await import(`../commands/${commandFile}`)).default;
+        this.commands.set(command.data.name, command);
     }
   }
 };
