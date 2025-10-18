@@ -4,10 +4,14 @@
     "chokidar": "^4.0.3",
     "discord.js": "^14.23.2",
     "nodemon": "^3.1.10",
-    "npm-check-updates": "^19.1.1",
-    "typescript": "^5.9.3"
+    "npm-check-updates": "^19.1.1"
   },
   "scripts": {
-    "aurelia": "nodemon --watch ./ --ext js,json --delay 5000ms --exec \"clear && node ./deploy-commands.js && node ./index.js\""
+    "aurelia": "nodemon --watch ./ --ext js,json --delay 5000ms --exec \"clear && node ./index.js\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

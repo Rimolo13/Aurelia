@@ -6,34 +6,37 @@ export class LoadFeatures {
   public features: any[] = [];
 
   constructor(instance: Client) {
-    this.loadFeatures(instance).then(() => {
-      console.log(`Loaded Functions📜: [ ${this.features.map((f) => f.constructor.name)} ]`);
-    });
+    if (fs.existsSync("./features")) {
+      this.LoadFeatures(instance).then(() => {
+        console.log(
+          `Loaded Functions📜: [ ${this.features.map(
+            (f) => f.constructor.name
+          )} ]`
+        );
+      });
+    }
   }
 
-  private async loadFeatures(instance: Client) {
+  private async LoadFeatures(instance: Client) {
     const featuresPath = path.resolve("./features");
     const files = fs.readdirSync(featuresPath).filter((f) => f.endsWith(".js"));
 
     for (const file of files) {
       const modulePath = path.join(featuresPath, file);
-
       const importedModule = await import(`file://${modulePath}`);
-
       const className = path.basename(file, ".js");
-
       const FeatureClass = importedModule.default ?? importedModule[className];
 
       if (!FeatureClass) {
         console.warn(
-          `Keine exportierte Klasse "${className}" in ${file} gefunden!`
+          `No exportable class "${className}" in ${file} found!`
         );
         continue;
       }
 
-      const featureInstance = new FeatureClass(instance);
+      const FeatureInstance = new FeatureClass(instance);
 
-      this.features.push(featureInstance);
+      this.features.push(FeatureInstance);
     }
   }
 }

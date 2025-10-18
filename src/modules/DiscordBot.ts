@@ -2,11 +2,13 @@ import {
   Client,
   IntentsBitField,
   GatewayIntentBits,
-  Partials,
+  Partials
 } from "discord.js";
 
 import { LoadFeatures } from "./LoadFeatures.js";
 import { AutoUpdate } from "./AutoUpdate.js";
+import { DeployCommands } from "./DeployCommands.js";
+import { LoadCommands } from "./LoadCommands.js";
 
 export class DiscordBot {
   instance: Client;
@@ -39,10 +41,12 @@ export class DiscordBot {
 
     new LoadFeatures(this.instance);
     new AutoUpdate();
+    new DeployCommands();
+    new LoadCommands(this.instance);
 
     this.instance.once("clientReady", (client: Client) => {
       console.log(`${this.instance.user?.username} ist Online🌐`);
-    });
+    }); 
 
     this.instance.login(token);
   }
