@@ -7,7 +7,7 @@
     "npm-check-updates": "^19.1.1"
   },
   "scripts": {
-    "aurelia": "nodemon --watch ./ --ext js,json --delay 5000ms --exec \"clear && node ./index.js\""
+    "aurelia": "nodemon --watch ./ --ext js,json --delay 13000ms --exec \"clear && node ./index.js\""
   },
   "devDependencies": {
     "@types/node": "^24.8.1",
